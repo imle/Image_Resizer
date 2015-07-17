@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GETTING STARTED WITH BRACKETS</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    </head>
+    <body>
+        <div id="modal">
+            <div id="cropping_main_container">
+                <div id="cropping_gredyed_container">
+                    <div id="cropping_sizing_container"></div>
+                    <div id="cropping_inner_container">
+                        <img id="foreground_crop_image" src="http://www.google.com/maps/about/images/contribute/share-carousel1.jpg"/>
+                    </div>
+                    <div id="cropping_drag_helper">
+                        <img id="background_crop_image" src="http://www.google.com/maps/about/images/contribute/share-carousel1.jpg"/>
+                        <div id="cropping_pointer"></div>
+                    </div>
+                    <div id="cropping_dtr"><span>Drag to Reposition</span></div>
+                </div>
+                <div id="cropping_slider_outer_container">
+                    <div id="cropping_slider_container">
+                        <div class="cropping_slider_indicator" id="csi_minus"></div>
+                        <div id="cropping_slider"></div>
+                        <div class="cropping_slider_indicator" id="csi_plus"></div>
+                    </div>
+                </div>
+                <div id="cropping_resize_warning">
+                    <span>Zooming in this close will make your photo less clear.</span>
+                </div>
+            </div>
+            <div id="cropping_footer">
+                <div id="save_button">
+                    <span>Save</span>
+                </div>
+            </div>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
+</html>
