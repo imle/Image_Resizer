@@ -49,4 +49,4 @@ data = {
 
 ## Example
  - [Cover](https://stevenimle.github.io/Image_Resizer/examples/cover/)
- - Contain (TODO)
+ - [Contain](https://stevenimle.github.io/Image_Resizer/examples/contain/)
