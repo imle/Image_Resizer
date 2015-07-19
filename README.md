@@ -7,20 +7,20 @@ To use you must have jQuery UI with a minimum version number of 1.5 and a jQuery
 ## Getting Started
 ### Files to Include
 ```
-		<script src="jquery.min.js"></script>
-		<script src="jquery-ui.min.js"></script>
-		<script src="image_sizer_1.0.min.js"></script>
-		<link rel="stylesheet" href="imager_sizer_1.0.min.css">
+<script src="jquery.min.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="image_sizer_1.0.min.js"></script>
+<link rel="stylesheet" href="imager_sizer_1.0.min.css">
 ```
 ### Calling the UI
 ```
 $("#container").cropper({
-    width:     400,                     //The final width of the image
     height:    400,                     //The final height of the image
+    width:     400,                     //The final width of the image
     zoom:      2,                       //Maximum allowed zoom
     contain:   false,                   //Cover or contain
     image_url: "example_image_1.jpg",   //URL of the photo to load
-    
+
     button:    $("#save_button"),       //Element to attach submit callback to
 
     submit: function() {},              //Callback to run when the user clicks submit
@@ -29,6 +29,20 @@ $("#container").cropper({
 });
 ```
 
+### Using the Data
+The following data structure will be passed to the submit callback.
+```
+data = {
+    height: 400                 //Specified input height value
+    width: 400                  //Specified input width value
+    ratio: 1.0651465798045603   //Ratio of the zoom (i.e. 106% of original)
+    top_x: 0.37484355444305384  //Percent based distance of top left corner from left edge of image
+    top_y: 0.10703363914373089  //Percent based distance of top left corner from top of image
+    bot_x: 0.6251564455569462   //Percent based distance of bottom right corner from left edge of image
+    bot_y: 0.7186544342507645   //Percent based distance of bottom right corner from top of image
+}
+```
+
 ## Example
  - [Cover](https://stevenimle.github.io/Image_Resizer/examples/cover/)
- 
+ - Contain (TODO)
