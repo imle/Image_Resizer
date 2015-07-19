@@ -28,6 +28,7 @@ $.widget("custom.cropper", {
 	},
 
 	_create: function() {
+		this.element.hide();
 		this._createElements();
 		this._setValueLimits();
 		this._getElements();
@@ -84,6 +85,7 @@ $.widget("custom.cropper", {
 		this.$foreground_image.attr("src", this.options.image_url);
 		this.$background_image.attr("src", this.options.image_url).load(function() {
 			_this._setup(_this);
+			this.element.show();
 		});
 	},
 
