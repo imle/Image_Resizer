@@ -1,0 +1,148 @@
+#cropping_main_container,
+#cropping_main_container * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+#cropping_main_container {
+  overflow: hidden;
+  position: relative;
+  padding: 70px 40px;
+  font-family: sans-serif; }
+  #cropping_main_container img {
+    display: block; }
+  #cropping_main_container #cropping_gredyed_container {
+    margin: 0 auto;
+    position: relative; }
+    #cropping_main_container #cropping_gredyed_container #cropping_dtr {
+      position: absolute;
+      top: 15px;
+      left: 0;
+      right: 0;
+      text-align: center; }
+      #cropping_main_container #cropping_gredyed_container #cropping_dtr span {
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        -webkit-border-radius: 3px;
+        -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+        height: 26px;
+        font-size: 14px;
+        line-height: 24px;
+        padding: 0 6px;
+        display: inline-block;
+        color: #DEDEDE;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
+    #cropping_main_container #cropping_gredyed_container #cropping_drag_helper {
+      position: absolute;
+      top: -100px;
+      left: -100px; }
+      #cropping_main_container #cropping_gredyed_container #cropping_drag_helper #background_crop_image {
+        opacity: 0.3;
+        cursor: move; }
+    #cropping_main_container #cropping_gredyed_container #cropping_inner_container {
+      height: 100%;
+      overflow: hidden;
+      position: relative; }
+      #cropping_main_container #cropping_gredyed_container #cropping_inner_container #foreground_crop_image {
+        top: -100px;
+        left: -100px;
+        position: absolute; }
+  #cropping_main_container #cropping_slider_outer_container {
+    padding-top: 85px; }
+    #cropping_main_container #cropping_slider_outer_container #cropping_slider_container {
+      height: 29px;
+      width: 400px;
+      margin: 0 auto;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding-top: 14px;
+      cursor: default;
+      position: relative; }
+    #cropping_main_container #cropping_slider_outer_container #cropping_slider {
+      height: 1px;
+      position: relative;
+      background-color: white;
+      width: 80%;
+      margin: 0 auto; }
+      #cropping_main_container #cropping_slider_outer_container #cropping_slider .ui-slider-handle {
+        height: 11px;
+        width: 11px;
+        top: -5px;
+        margin-left: -5px;
+        position: absolute;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: white;
+        outline: none;
+        cursor: ew-resize; }
+    #cropping_main_container #cropping_slider_outer_container .cropping_slider_indicator {
+      width: 10%;
+      position: absolute;
+      top: 0;
+      height: 100%; }
+      #cropping_main_container #cropping_slider_outer_container .cropping_slider_indicator#csi_plus:after, #cropping_main_container #cropping_slider_outer_container .cropping_slider_indicator#csi_minus:after {
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        content: "";
+        height: 1px;
+        width: 13px;
+        background-color: white; }
+      #cropping_main_container #cropping_slider_outer_container .cropping_slider_indicator#csi_minus {
+        left: 0;
+        border-radius: 15px 0 0 15px; }
+        #cropping_main_container #cropping_slider_outer_container .cropping_slider_indicator#csi_minus:after {
+          left: 50%;
+          margin-left: -7px; }
+      #cropping_main_container #cropping_slider_outer_container .cropping_slider_indicator#csi_plus {
+        right: 0;
+        border-radius: 0 15px 15px 0; }
+        #cropping_main_container #cropping_slider_outer_container .cropping_slider_indicator#csi_plus:after {
+          right: 50%;
+          margin-right: -7px; }
+        #cropping_main_container #cropping_slider_outer_container .cropping_slider_indicator#csi_plus:before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-left: 0;
+          margin-top: -7px;
+          content: "";
+          height: 13px;
+          width: 1px;
+          background-color: white; }
+  #cropping_main_container #cropping_sizing_container {
+    position: absolute; }
+  #cropping_main_container #cropping_resize_warning {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    color: #fff;
+    line-height: 28px;
+    height: 27px;
+    font-size: 14px; }
+
+#cropping_footer {
+  padding: 10px 10px;
+  background-color: #DEDEDE; }
+  #cropping_footer:before, #cropping_footer:after {
+    content: "";
+    display: table; }
+  #cropping_footer:after {
+    clear: both; }
+  #cropping_footer #save_button {
+    height: 25px;
+    line-height: 24px;
+    padding: 0 14px;
+    float: right;
+    background-color: #5E89A2;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer; }
+
+/*# sourceMappingURL=imager_sizer_1.0.css.map */
