@@ -9,6 +9,10 @@ $.widget("custom.cropper", {
 		contain: false,
 		image_url: "https://stevenimle.github.io/Image_Resizer/examples/images/example_image_1.jpg",
 
+		//jQuery elements
+		button: null,
+
+		//callbacks
 		submit: function() {},
 		slide: function() {},
 		drag: function() {}
@@ -125,7 +129,12 @@ $.widget("custom.cropper", {
 	},
 
 	_createEventListeners: function(_this) {
-		this.element.find("#save_button").click(function() {
+		if (!this.options.button) {
+			this.options.button = this.element.find("#save_button");
+			this.element.find("#cropping_footer").show();
+		}
+
+		this.options.button.click(function() {
 			var pos = {
 				left: Math.abs(parseInt(_this.$foreground_image.css("left"))),
 				top: Math.abs(parseInt(_this.$foreground_image.css("top")))

@@ -9,6 +9,10 @@ $.widget("custom.cropper", {
 		contain: false,
 		image_url: "https://stevenimle.github.io/Image_Resizer/examples/images/example_image_1.jpg",
 
+		//jQuery elements
+		button: null,
+
+		//callbacks
 		submit: function() {},
 		slide: function() {},
 		drag: function() {}
@@ -102,30 +106,35 @@ $.widget("custom.cropper", {
 	_setValueLimits: function() {
 		this.options.height = this.options.height < this.limits.min.height
 			? this.limits.min.height : this.options.height > this.limits.max.height
-			? this.limits.max.height : this.options.height;
+			                      ? this.limits.max.height : this.options.height;
 		this.options.width = this.options.width < this.limits.min.width
 			? this.limits.min.width : this.options.width > this.limits.max.width
-			? this.limits.max.width : this.options.width;
+			                     ? this.limits.max.width : this.options.width;
 		this.options.zoom = this.options.zoom < this.limits.min.zoom
 			? this.limits.min.zoom : this.options.zoom > this.limits.max.zoom
-			? this.limits.max.zoom : this.options.zoom;
+			                    ? this.limits.max.zoom : this.options.zoom;
 	},
 
 	_createElements: function() {
 		this.element.html('<div id="cropping_main_container"><div id="cropping_gredyed_container">'
-          + '<div id="cropping_sizing_container"></div><div id="cropping_inner_container">'
-          + '<img id="foreground_crop_image" src=""/></div><div id="cropping_drag_helper">'
-          + '<img id="background_crop_image" src=""/><div id="cropping_pointer"></div></div>'
-          + '<div id="cropping_dtr"><span>Drag to Reposition</span></div></div>'
-          + '<div id="cropping_slider_outer_container"><div id="cropping_slider_container">'
-          + '<div class="cropping_slider_indicator" id="csi_minus"></div><div id="cropping_slider"></div>'
-          + '<div class="cropping_slider_indicator" id="csi_plus"></div></div></div>'
-          + '<div id="cropping_resize_warning"><span>Zooming in this close will make your photo less clear.</span>'
-          + '</div></div><div id="cropping_footer"><div id="save_button"><span>Save</span></div></div>');
+		                  + '<div id="cropping_sizing_container"></div><div id="cropping_inner_container">'
+		                  + '<img id="foreground_crop_image" src=""/></div><div id="cropping_drag_helper">'
+		                  + '<img id="background_crop_image" src=""/><div id="cropping_pointer"></div></div>'
+		                  + '<div id="cropping_dtr"><span>Drag to Reposition</span></div></div>'
+		                  + '<div id="cropping_slider_outer_container"><div id="cropping_slider_container">'
+		                  + '<div class="cropping_slider_indicator" id="csi_minus"></div><div id="cropping_slider"></div>'
+		                  + '<div class="cropping_slider_indicator" id="csi_plus"></div></div></div>'
+		                  + '<div id="cropping_resize_warning"><span>Zooming in this close will make your photo less clear.</span>'
+		                  + '</div></div><div id="cropping_footer"><div id="save_button"><span>Save</span></div></div>');
 	},
 
 	_createEventListeners: function(_this) {
-		this.element.find("#save_button").click(function() {
+		if (!this.options.button) {
+			this.options.button = this.element.find("#save_button");
+			this.element.find("#cropping_footer").show();
+		}
+
+		this.options.button.click(function() {
 			var pos = {
 				left: Math.abs(parseInt(_this.$foreground_image.css("left"))),
 				top: Math.abs(parseInt(_this.$foreground_image.css("top")))
@@ -183,7 +192,7 @@ $.widget("custom.cropper", {
 				};
 
 				if (!_this.options.contain || _this.options.contain
-                  && _this.minimum == _this.options.width / _this.initial_width) {
+				                              && _this.minimum == _this.options.width / _this.initial_width) {
 					css_options_lt.left = css_options_lt.left > 0 ? 0 : css_options_lt.left;
 
 					css_options_lt.left = -css_options_lt.left + _this.options.width > css_options_hw.width
@@ -192,7 +201,7 @@ $.widget("custom.cropper", {
 				}
 
 				if (!_this.options.contain || _this.options.contain
-                  && _this.minimum == _this.options.height / _this.initial_height) {
+				                              && _this.minimum == _this.options.height / _this.initial_height) {
 					css_options_lt.top = css_options_lt.top > 0 ? 0 : css_options_lt.top;
 
 					css_options_lt.top = -css_options_lt.top + _this.options.height > css_options_hw.height
@@ -223,18 +232,18 @@ $.widget("custom.cropper", {
 			}
 		});
 	},
-	
+
 	ratio: function() {
 		return this.$foreground_image.height() / this.original_height;
 	},
-	
+
 	start: function() {
 		return {
 			x: Math.abs(parseInt(this.$foreground_image.css("left"))) / this.$foreground_image.width(),
 			y: Math.abs(parseInt(this.$foreground_image.css("top"))) / this.$foreground_image.height()
 		};
 	},
-	
+
 	end: function() {
 		var left = Math.abs(parseInt(this.$foreground_image.css("left")));
 		var top = Math.abs(parseInt(this.$foreground_image.css("top")));

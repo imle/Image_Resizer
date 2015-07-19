@@ -186,6 +186,7 @@
 }
 
 #cropping_footer {
+	display: none;
 	padding: 10px 10px;
 	background-color: #DEDEDE;
 	@include clearfix();
