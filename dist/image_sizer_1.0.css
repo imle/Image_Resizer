@@ -40,6 +40,7 @@
         opacity: 0.3;
         cursor: move; }
     #cropping_main_container #cropping_gredyed_container #cropping_inner_container {
+      background-color: whitesmoke;
       height: 100%;
       overflow: hidden;
       position: relative; }
@@ -145,5 +146,3 @@
     color: white;
     border-radius: 4px;
     cursor: pointer; }
-
-/*# sourceMappingURL=image_sizer_1.0.css.map */
