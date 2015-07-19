@@ -84,8 +84,8 @@ $.widget("custom.cropper", {
 		var _this = this;
 		this.$foreground_image.attr("src", this.options.image_url);
 		this.$background_image.attr("src", this.options.image_url).load(function() {
-			_this._setup(_this);
 			_this.element.show();
+			_this._setup(_this);
 		});
 	},
 
