@@ -3,8 +3,8 @@ $.widget("custom.cropper", {
 	widget_event_prefix: "cropping",
 
 	options: {
-		width: 400,
 		height: 400,
+		width: 400,
 		zoom: 2,
 		contain: false,
 		image_url: "https://stevenimle.github.io/Image_Resizer/examples/images/example_image_1.jpg",
