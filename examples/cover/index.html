@@ -32,7 +32,14 @@
 		<script type="text/javascript" src="../../dist/image_sizer_1.0.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$("#container").cropper();
+				$("#container").cropper({
+					submit: function(data) {
+						console.log(data);
+						alert(Object.keys(data).reduce(function(str, key) {
+							return str + key + ": " + data[key] + "\n";
+						}, ""));
+					}
+				});
 			});
 		</script>
 	</body>
