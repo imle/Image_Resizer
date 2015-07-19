@@ -40,7 +40,7 @@
         opacity: 0.3;
         cursor: move; }
     #cropping_main_container #cropping_gredyed_container #cropping_inner_container {
-      background-color: whitesmoke;
+      background-color: #DFE7EC;
       height: 100%;
       overflow: hidden;
       position: relative; }
