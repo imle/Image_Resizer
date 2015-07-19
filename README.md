@@ -2,15 +2,14 @@
 
 A jQuery widget for client image resizing. It's built to function just like the Profile Image Cropping tool found on Facebook. Fell free to use this in any of your own projects. This project supports any browser that your chosen version of jQuery supports.
 
-To use you must have jQuery UI with a minimum version number of 1.5 and a jQuery version of 1.2.6 or higher.
-
 ## Getting Started
 ### Files to Include
+You must be using jQuery UI with a minimum version number of 1.5 and a jQuery version of 1.2.6 or higher.
 ```
 <script src="jquery.min.js"></script>
 <script src="jquery-ui.min.js"></script>
 <script src="image_sizer_1.0.min.js"></script>
-<link rel="stylesheet" href="imager_sizer_1.0.min.css">
+<link rel="stylesheet" href="image_sizer_1.0.min.css">
 ```
 ### Calling the UI
 ```
