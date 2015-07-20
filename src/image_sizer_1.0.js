@@ -1,5 +1,5 @@
 $.widget("custom.cropper", {
-	version: "1.0",
+	version: "1.1",
 	widget_event_prefix: "cropping",
 
 	options: {
@@ -7,7 +7,7 @@ $.widget("custom.cropper", {
 		width: 400,
 		zoom: 2,
 		contain: false,
-		image_url: "https://stevenimle.github.io/Image_Resizer/examples/images/example_image_1.jpg",
+		image_url: "http://placehold.it/1280x720",
 
 		//jQuery elements
 		button: null,
@@ -191,22 +191,32 @@ $.widget("custom.cropper", {
 					top: -(_this.resize_center.y * css_options_hw.height - _this.options.height / 2)
 				};
 
-				if (!_this.options.contain || _this.options.contain
-				                              && _this.minimum == _this.options.width / _this.initial_width) {
+				if (!_this.options.contain || css_options_hw.width >= _this.options.width
+				  || _this.minimum == _this.options.width / _this.initial_width) {
 					css_options_lt.left = css_options_lt.left > 0 ? 0 : css_options_lt.left;
 
 					css_options_lt.left = -css_options_lt.left + _this.options.width > css_options_hw.width
 						? -(css_options_hw.width - _this.options.width) / _this.options.width * 100 + "%"
 						: css_options_lt.left / _this.options.width * 100 + "%";
 				}
+				else if (css_options_hw.width < _this.options.width) {
+					css_options_lt.left = css_options_lt.left + css_options_hw.width > _this.options.width
+						? _this.options.width - css_options_hw.width : css_options_lt.left < 0
+						? 0 : css_options_lt.left;
+				}
 
-				if (!_this.options.contain || _this.options.contain
-				                              && _this.minimum == _this.options.height / _this.initial_height) {
+				if (!_this.options.contain || css_options_hw.height >= _this.options.height
+				  || _this.minimum == _this.options.height / _this.initial_height) {
 					css_options_lt.top = css_options_lt.top > 0 ? 0 : css_options_lt.top;
 
 					css_options_lt.top = -css_options_lt.top + _this.options.height > css_options_hw.height
 						? -(css_options_hw.height - _this.options.height) / _this.options.height * 100 + "%"
 						: css_options_lt.top / _this.options.height * 100 + "%";
+				}
+				else if (css_options_hw.height < _this.options.height) {
+					css_options_lt.top = css_options_lt.top + css_options_hw.height > _this.options.height
+						? _this.options.height - css_options_hw.height : css_options_lt.top < 0
+						? 0 : css_options_lt.top;
 				}
 
 				_this.$foreground_image.css(css_options_lt);
