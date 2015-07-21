@@ -52,7 +52,7 @@ $.widget("custom.cropper", {
 			width: _this.original_width * (_this.$main_container.outerHeight() / _this.original_height)
 		};
 
-        if (_this.options.width > _this.original_width) {
+        if (_this.options.width > css_start_options.width) {
             css_start_options.height = css_start_options.height * (_this.options.width / css_start_options.width);
             css_start_options.top = -(parseInt(_this.$main_container.css("padding-top"))) * (_this.options.width / css_start_options.width);
             css_start_options.width = _this.options.width;
