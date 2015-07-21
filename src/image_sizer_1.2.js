@@ -1,5 +1,5 @@
 $.widget("custom.cropper", {
-	version: "1.1",
+	version: "1.2",
 	widget_event_prefix: "cropping",
 
 	options: {
@@ -15,7 +15,8 @@ $.widget("custom.cropper", {
 		//callbacks
 		submit: function() {},
 		slide: function() {},
-		drag: function() {}
+		drag: function() {},
+		ready: function() {}
 	},
 
 	limits: {
@@ -51,6 +52,12 @@ $.widget("custom.cropper", {
 			width: _this.original_width * (_this.$main_container.outerHeight() / _this.original_height)
 		};
 
+        if (_this.options.width > _this.original_width) {
+            css_start_options.height = css_start_options.height * (_this.options.width / css_start_options.width);
+            css_start_options.top = -(parseInt(_this.$main_container.css("padding-top"))) * (_this.options.width / css_start_options.width);
+            css_start_options.width = _this.options.width;
+        }
+
 		_this.$foreground_image.css(css_start_options);
 		_this.$background_image.css(css_start_options);
 
@@ -59,7 +66,7 @@ $.widget("custom.cropper", {
 
 		css_start_options = {
 			left: -(_this.initial_width / 2 - _this.options.width / 2),
-			top: -(parseInt(_this.$main_container.css("padding-top")))
+			top: css_start_options.top || -(parseInt(_this.$main_container.css("padding-top")))
 		};
 
 		_this.$foreground_image.css(css_start_options);
@@ -89,6 +96,7 @@ $.widget("custom.cropper", {
 		this.$foreground_image.attr("src", this.options.image_url);
 		this.$background_image.attr("src", this.options.image_url).load(function() {
 			_this.element.show();
+			_this.options.ready();
 			_this._setup(_this);
 		});
 	},
@@ -134,7 +142,7 @@ $.widget("custom.cropper", {
 			this.element.find("#cropping_footer").show();
 		}
 
-		this.options.button.click(function() {
+		this.options.button.unbind("click").click(function() {
 			var pos = {
 				left: Math.abs(parseInt(_this.$foreground_image.css("left"))),
 				top: Math.abs(parseInt(_this.$foreground_image.css("top")))
@@ -149,6 +157,9 @@ $.widget("custom.cropper", {
 				bot_x: (pos.left + _this.options.width) / _this.$foreground_image.width(),
 				bot_y: (pos.top + _this.options.height) / _this.$foreground_image.height()
 			});
+
+			_this.element.empty();
+			_this.destroy();
 		});
 
 		this.$drag_helper.draggable({
