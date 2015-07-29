@@ -144,8 +144,8 @@ $.widget("custom.cropper", {
 
 		this.options.button.unbind("click").click(function() {
 			var pos = {
-				left: Math.abs(parseInt(_this.$foreground_image.css("left"))),
-				top: Math.abs(parseInt(_this.$foreground_image.css("top")))
+				left: -parseInt(_this.$foreground_image.css("left")),
+				top: -parseInt(_this.$foreground_image.css("top"))
 			};
 
 			_this.options.submit({

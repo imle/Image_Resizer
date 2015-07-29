@@ -8,8 +8,8 @@ You must be using jQuery UI with a minimum version number of 1.5 and a jQuery ve
 ```
 <script src="jquery.min.js"></script>
 <script src="jquery-ui.min.js"></script>
-<script src="image_sizer_1.2.min.js"></script>
-<link rel="stylesheet" href="image_sizer_1.2.min.css">
+<script src="image_sizer.min.js"></script>
+<link rel="stylesheet" href="image_sizer.min.css">
 ```
 If you want to use this plugin on mobile, you will have to include [jQuery UI Touch Punch](http://touchpunch.furf.com/)
 ```
