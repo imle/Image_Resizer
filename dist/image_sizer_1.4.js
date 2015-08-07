@@ -1,5 +1,5 @@
 $.widget("custom.cropper", {
-	version: "1.3",
+	version: "1.4",
 	widget_event_prefix: "cropping",
 
 	options: {
@@ -21,8 +21,6 @@ $.widget("custom.cropper", {
 
 	limits: {
 		min: {
-			height: 100,
-			width: 100,
 			zoom: 2
 		},
 		max: {
@@ -31,6 +29,8 @@ $.widget("custom.cropper", {
 			zoom: 4
 		}
 	},
+
+	multiplier: 1,
 
 	_create: function() {
 		this.element.hide();
@@ -112,15 +112,15 @@ $.widget("custom.cropper", {
 	},
 
 	_setValueLimits: function() {
-		this.options.height = this.options.height < this.limits.min.height
-			? this.limits.min.height : this.options.height > this.limits.max.height
-			                      ? this.limits.max.height : this.options.height;
-		this.options.width = this.options.width < this.limits.min.width
-			? this.limits.min.width : this.options.width > this.limits.max.width
-			                     ? this.limits.max.width : this.options.width;
+		if (this.options.height > this.limits.max.height || this.options.width > this.limits.max.height) {
+            this.multiplier = Math.max(this.options.height / this.limits.max.height, this.options.width / this.limits.max.height);
+            this.options.height = this.options.height / this.multiplier;
+            this.options.width = this.options.width / this.multiplier;
+        }
+
 		this.options.zoom = this.options.zoom < this.limits.min.zoom
 			? this.limits.min.zoom : this.options.zoom > this.limits.max.zoom
-			                    ? this.limits.max.zoom : this.options.zoom;
+            ? this.limits.max.zoom : this.options.zoom;
 	},
 
 	_createElements: function() {
@@ -149,9 +149,9 @@ $.widget("custom.cropper", {
 			};
 
 			_this.options.submit({
-				height: _this.options.height,
-				width: _this.options.width,
-				ratio: _this.$foreground_image.height() / _this.original_height,
+				height: _this.options.height * _this.multiplier,
+				width: _this.options.width * _this.multiplier,
+				ratio: _this.$foreground_image.height() / _this.original_height * _this.multiplier,
 				top_x: pos.left / _this.$foreground_image.width(),
 				top_y: pos.top / _this.$foreground_image.height(),
 				bot_x: (pos.left + _this.options.width) / _this.$foreground_image.width(),
